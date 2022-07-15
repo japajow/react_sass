@@ -216,4 +216,81 @@ rsc/styles/components/sidebar.sass
 import "../styles/components/sidebar.sass";
 ```
 
+## Criando a estilização do sidebar.sass
 
+```sass
+
+@use '../variables'
+
+#sidebar
+    background-color: variables.$bg-color
+    flex: 1 1 0
+    border-radius: variables.$container-border-radius
+    display: flex
+    align-items: center
+    flex-direction: column
+    text-align: center
+    position: relative
+    padding: 3rem 0
+
+    img
+        max-width: 70%
+
+```
+
+> Agora no arquivo sidebar.jsx colocamos a imagem
+
+```tsx
+<img src={Avatar} alt="Bruno AKH" />
+```
+
+> COntinuando com a estilizacao da imagem
+
+```sass
+@use '../variables'
+
+#sidebar
+    background-color: variables.$bg-color
+    flex: 1 1 0
+    border-radius: variables.$container-border-radius
+    display: flex
+    align-items: center
+    flex-direction: column
+    text-align: center
+    position: relative
+    padding: 3rem 0
+
+    img
+        max-width: 70%
+        border-radius: variables.$container-border-radius
+        position: absolute
+        top: -3rem
+```
+
+> Criando o sass do maincontent.sass
+
+src/styles/components/maincontent.sass
+
+> Em MainContent.jsx
+
+```tsx
+import React from "react";
+import "../styles/components/maincontent.sass";
+export const MainContent = () => {
+  return <main id="main-content">Main content</main>;
+};
+```
+
+No arquivo de estilo do maincontent.sass
+
+```sass
+
+@use '../variables'
+
+#main-content
+  background-color: variables.$bg-color
+  flex: 2 1 0
+  bodder-radius: variables.$container-border-radius
+  padding: 3rem
+
+```
