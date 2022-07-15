@@ -294,3 +294,48 @@ No arquivo de estilo do maincontent.sass
   padding: 3rem
 
 ```
+
+## Terminando o estilo do sidebar.sass
+
+```sass
+ .title
+        color: variables.$text-color-secondary
+        background-color: variables.$bg-color-secondary
+        border-radius: variables.$card-border-radius
+        margin-top: 12rem
+        padding: .8rem 1.2rem
+```
+
+> criando o mixins
+
+```sass
+
+@use 'variables'
+
+
+@mixin btn
+  padding: 1rem 1.2rem
+  color: variables.$text-color
+  background: variables.$background
+  text-decoration: none
+  border-radius:  3rem
+```
+
+> COmo usar o mixins
+
+primeiro importamos ele com @use mixins
+
+```sass
+@use '../mixins'
+```
+
+Depois usamos ele @include
+
+```sass
+
+ .btn
+        @include mixins.btn
+
+```
+
+
