@@ -530,7 +530,7 @@ export const InformationContainer = () => {
     width: 100%
 
     h3
-      color: variables.$bg-color-secondary
+      color: variables.$text-color-secondary
       font-size: .8rem
       margin-bottom: .5rem
     p
@@ -556,4 +556,254 @@ export const InformationContainer = () => {
 
 ```
 
+## Criando estruturando e estilizando nosso Main Content
 
+> Criando os elementos no MainContent.jsx
+
+> Criando os componentes que vai no MainContent.jsx
+
+<p>about</p>
+<p>tecnologias</p>
+<p>projetos</p>
+
+src/components/AboutContainer.jsx
+src/components/ProjectsContainer.jsx
+src/components/TechnologiesContainer.jsx
+
+> Importamos todos eles no MainContent.jsx
+
+```jsx
+import { AboutContainer } from "../components/AboutContainer";
+import { TechnologiesContainer } from "../components/TechnologiesContainer";
+import { ProjectsContainer } from "../components/ProjectsContainer";
+
+import "../styles/components/maincontent.sass";
+
+export const MainContent = () => {
+  return (
+    <main id="main-content">
+      <AboutContainer />
+      <TechnologiesContainer />
+      <ProjectsContainer />
+    </main>
+  );
+};
+```
+
+> Estruturando nosso AboutContainer
+
+```jsx
+export const AboutContainer = () => {
+  return (
+    <section className="about-container">
+      <h2>Sobre</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eum neque
+        eligendi, soluta sequi iure magni harum molestiae, labore fugiat debitis
+        minima odio blanditiis impedit voluptatibus aspernatur dignissimos
+        explicabo eaque?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eum neque
+        eligendi, soluta sequi iure magni harum molestiae, labore fugiat debitis
+        minima odio blanditiis impedit voluptatibus aspernatur dignissimos
+        explicabo eaque?
+      </p>
+    </section>
+  );
+};
+```
+
+> Estilizando o maincontent.sass
+
+```sass
+section
+    display: flex
+    flex-direction: column
+
+  h2
+    color: variables.$text-color
+    font-size: 2.2rem
+    margin-bottom: 1.3rem
+    @include mixins.center
+    jusify-content: start
+    gap: 1rem
+
+    &:after
+      @include mixins.gradient-border
+
+```
+
+> Criando o mixin gradient-border
+
+mixins.sass
+
+```sass
+@mixin gradient-border
+  content: ''
+  background: variables.$gradient
+  height: 3px
+  width: 30%
+```
+
+> Finalizando o estilo do maincontent
+
+```sass
+
+@use '../variables'
+@use '../mixins'
+#main-content
+  background-color: variables.$bg-color
+  flex: 2 1 0
+  bodder-radius: variables.$container-border-radius
+  padding: 3rem
+
+  section
+    display: flex
+    flex-direction: column
+
+  h2
+    color: variables.$text-color
+    font-size: 2.2rem
+    margin-bottom: 1.3rem
+    @include mixins.center
+    jusify-content: start
+    gap: 1rem
+
+    &:after
+      @include mixins.gradient-border
+  p
+    color: variables.$text-color-secondary
+    margin-bottom: 1rem
+    line-height: 1.4rem
+
+  .btn
+    @include mixins.btn
+    align-self: start
+
+```
+
+> Estruturando o ProjectsContainer.jsx
+
+```jsx
+export const ProjectsContainer = () => {
+  return (
+    <section className="products-container">
+      <h2>Projetos</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est
+        hic commodi autem nam odio voluptatem ab nemo maxime, cumque, rem
+        nostrum dicta cupiditate, dignissimos a! Provident repudiandae
+        dignissimos iure!
+      </p>
+      <a href="#" className="btn">
+        Ver Projetos
+      </a>
+    </section>
+  );
+};
+```
+
+> Estruturando o TechnologiesContainer.jsx
+
+Importamos os icones
+
+```jsx
+import {
+  DiHtml5,
+  DiCss3,
+  DiJsBadge,
+  DiNodejsSmall,
+  DiMysql,
+  DiReact,
+} from "react-icons/di";
+```
+
+Criamos as tecnologias em um array
+
+```jsx
+const technologies = [
+  { id: "html", name: "HTML5", icon: <DiHtml5 /> },
+  { id: "css", name: "CSS3", icon: <DiCss3 /> },
+  { id: "js", name: "Javascript", icon: <DiJsBadge /> },
+  { id: "node", name: "Node.js", icon: <DiNodejsSmall /> },
+  { id: "mysql", name: "MySQL", icon: <DiMysql /> },
+  { id: "react", name: "React", icon: <DiReact /> },
+];
+```
+
+Chamamos as tecnologia em um map
+
+```jsx
+export const TechnologiesContainer = () => {
+  return (
+    <section className="technologies-container">
+      <h2>Tecnologias</h2>
+      <div className="technologies-grid">
+        {technologies.map((technology) => (
+          <div
+            key={technology.id}
+            className="technology-card"
+            id={technology.id}
+          >
+            {technology.icon}
+            <div className="technology-info">
+              <h3>{technology.name}</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+```
+
+> Estilizando o sass do tecnologiescontainer.sass
+
+```sass
+@use '../variables'
+@use '../mixins'
+
+.technologies-container
+  margin-bottom: 1rem
+
+  .technologies-grid
+    display: flex
+    flex-wrap: wrap
+    gap: 1.5rem
+
+    .technology-card
+      @include mixins.center
+      gap: 1rem
+      padding: 1rem
+      border: 1px solid #333
+      width: 45%
+      border-radius: variables.$card-border-radius
+
+      h3
+        color: variables.$text-color
+        margin-bottom: 1rem
+
+      svg
+        font-size: 6rem
+    #html
+      svg
+        color: #e44d26
+    #css
+      svg
+        color: #1572b6
+    #js
+      svg
+        color: #f0db4f
+    #node
+      svg
+        color: #83cd29
+    #mysql
+      svg
+        color: #00618a
+    #react
+      svg
+        color: #61dafb
+
+```
