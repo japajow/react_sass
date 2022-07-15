@@ -338,4 +338,115 @@ Depois usamos ele @include
 
 ```
 
+## criando component rede sociais
 
+src/components/SocialNetworks.jsx
+
+```jsx
+export const SocialNetworks = () => {
+  return <div>SocialNetworks</div>;
+};
+```
+
+> Criando arquivo de css do SocialNetworks
+
+src/styles/components/socialnetworks.sass
+
+> Importamos o arquivo socialnetworks.sass
+
+```jsx
+import "../styles/components/socialnetworks.sass";
+```
+
+> Usando o component SocialNetworks no Sidebar.jsx
+
+```tsx
+import Avatar from "../img/eu.jpg";
+import "../styles/components/sidebar.sass";
+import { SocialNetworks } from "./SocialNetworks";
+export const Sidebar = () => {
+  return (
+    <aside id="sidebar">
+      <img src={Avatar} alt="Bruno AKH" />
+      <p className="title">Desenvolvedor</p>
+      <SocialNetworks />
+      <p>Informações de contato</p>
+      <a href="" className="btn">
+        Download currículo
+      </a>
+    </aside>
+  );
+};
+```
+
+> Importando os Icones
+
+```tsx
+import { FaLikedinIn, FaGithub, FaInstagram } from "react-icons";
+```
+
+> Criando um mock de dados para contato social
+
+```jsx
+const socialNetworks = [
+  { name: "linkedin", icon: <FaLikedinIn /> },
+  { name: "github", icon: <FaGithub /> },
+  { name: "instagram", icon: <FaInstagram /> },
+];
+```
+
+> Agora que temo os dados vamos percorrer ele com map
+
+```jsx
+<section id="social-networks">
+  {socialNetworks.map((network) => (
+    <a href="" className="social-btn" id={network.name} key={network.name}>
+      {network.icon}
+    </a>
+  ))}
+</section>
+```
+
+> Vamos estilizar os ícones socialnetworks.sass
+
+```sass
+
+@use '../variables'
+@use '../mixins'
+
+#social-networks
+    @include mixins.center
+    gap: 1rem
+    margin: 1rem 0
+
+    .social-btn
+      padding: .6rem
+      background-color: variables.$bg-color-secondary
+      border-radius: variables.$card-border-radius
+      color: #333
+      font-size: 1.3rem
+      @include mixins.center
+
+    #linkedin
+      color: #0072b1
+
+    #github
+      color: #111
+    #instagram
+      color: #bc2a8d
+
+    :hover
+        background: variables.$gradient
+        > svg
+            color: variables.$text-color
+
+```
+
+> Criando mixins que centraliza o conteúdo
+
+```sass
+@mixin center
+  display: flex
+  justify-content: center
+  align-items: center
+```
