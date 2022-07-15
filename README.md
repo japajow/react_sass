@@ -155,3 +155,25 @@ body
 
 
 ```
+
+## estruturando o components app.sass
+
+```sass
+
+@use '../variables'
+
+#portfolio
+    display: flex
+    flex-wrap: flex-wrap
+    padding: 3rem
+    gap: 3rem
+
+    h1 
+        width: 100%
+        font-size: 5rem
+        margim-bottom: 4rem
+        background: variables.$gradient
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+
+```
