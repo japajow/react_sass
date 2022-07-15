@@ -27,7 +27,7 @@ Importando o main.sass no main.jsx
 import "./styles/main.sass";
 ```
 
-## Organizando as pastas & variaveis 
+## Organizando as pastas & variaveis
 
 criamos a pasta
 src/components
@@ -69,4 +69,89 @@ main.sass
   box-sizing: border-box
 ```
 
+## Criando a estrutura do projeto
 
+Criando um arquivo src/styles/components/app.sass
+
+App.jsx
+
+```jsx
+import "./styles/components/app.sass";
+```
+
+Criando o arquivo src/components/Sidebar.jsx
+Criando o arquivo src/components/MainContent.jsx
+
+Sidebar.jsx
+
+```tsx
+import React from "react";
+
+export const Sidebar = () => {
+  return <div>Sidebar</div>;
+};
+```
+
+MainContent.jsx
+
+```tsx
+import React from "react";
+
+export const MainContent = () => {
+  return <div>MainContent</div>;
+};
+```
+
+> Com components criado vamos utilizar eles no App.jsx
+
+```tsx
+function App() {
+  return (
+    <div className="App">
+      <h1>Bruno AKH</h1>
+      <Sidebar />
+      <MainContent />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Colocando a imagem dentro da pasta img
+
+> Agora no main.sass
+
+```sass
+
+body
+
+
+a, svg
+    transition: .4s
+
+```
+
+> Definindo as cores do projeto no variables.sass
+
+```sass
+$text-color: #fff
+$text-color-secondary: #a6a6a6
+$body-bg-color: #271b31
+$bg-color: #111
+$bg-color-secondary: #1d1d1d
+$container-border-radius: 10px
+$card-border-radius: 5px
+$gradient: linear-gradient(90deg, rgba(250,82,82,1) 0%, rgba(221,36,118,1) 100%)
+
+```
+
+Agora no main.sass
+
+```sass
+body
+  background-color: variables.$bg-color
+  color: variables.$text-color
+
+
+```
