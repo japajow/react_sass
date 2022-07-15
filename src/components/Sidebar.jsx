@@ -1,5 +1,5 @@
 import { SocialNetworks } from "./SocialNetworks";
-
+import {InformationContainer} from './InformationContainer'
 import Avatar from "../img/eu.jpg";
 
 import "../styles/components/sidebar.sass";
@@ -10,7 +10,7 @@ export const Sidebar = () => {
       <img src={Avatar} alt="Bruno AKH" />
       <p className="title">Desenvolvedor</p>
       <SocialNetworks />
-      <p>Informações de contato</p>
+      <InformationContainer/>
       <a href="" className="btn">
         Download currículo
       </a>

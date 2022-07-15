@@ -450,3 +450,110 @@ const socialNetworks = [
   justify-content: center
   align-items: center
 ```
+
+## Criando e estilizando Componente de informações
+
+> Criamos o arquivo src/components/InformationContainer.jsx
+
+```tsx
+export const InformationContainer = () => {
+  return <div>InformationContainer</div>;
+};
+```
+
+> Criamos o arquivo sass /src/styles/components/informationcontainer.sass
+
+> Importamos o componente no Sidebar.jsx
+
+> Importamos os ícones no InformationContainer.jsx
+
+```jsx
+import { AiFillPhone, AiOutlineMail, AiFillEnvironment } from "react-icons/ai";
+```
+
+> Estruturamos o InformationContainer.jsx
+
+```jsx
+import { AiFillPhone, AiOutlineMail, AiFillEnvironment } from "react-icons/ai";
+
+import "../styles/components/informationcontainer.sass";
+
+export const InformationContainer = () => {
+  return (
+    <section id="information">
+      <div className="info-card">
+        <AiFillPhone id="phone-icon" />
+        <div>
+          <h3>Telefone</h3>
+          <p>(62)99966-9341</p>
+        </div>
+        <AiOutlineMail id="email-icon" />
+        <div>
+          <h3>E-mail</h3>
+          <p>suportecsanapolis@gmail.com</p>
+        </div>
+        <AiFillEnvironment id="pin-icon" />
+        <div>
+          <h3>Localização</h3>
+          <p>Anápolis / GO</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+```
+
+> estilizando o informationcontainer.sass
+
+```sass
+
+@use '../variables'
+@use '../mixins'
+
+#information-container
+  @include mixins.center
+  flex-direction: column
+  background-color: variables.$bg-color-secondary
+  padding: 1rem
+  margin-bottom: 2rem
+  text-align: left
+  width: 80%
+  border-radius: variables.$card-border-radius
+
+  .info-card
+    @include mixins.center
+    justify-content: start
+    gap: 1rem
+    padding-bottom: .8rem
+    margin-bottom: .8rem
+    border-bottom: 1px solid #444
+    width: 100%
+
+    h3
+      color: variables.$bg-color-secondary
+      font-size: .8rem
+      margin-bottom: .5rem
+    p
+      color: variables.$text-color
+      font-weight: bold
+
+    svg
+      background-color: variables.$bg-color
+      padding: .4rem
+      width: 2rem
+      height: 2rem
+      border-radius: variables.$card-border-radius
+
+    #phone-icon
+      color: #e93b81
+
+    #email-icon
+      color: #6ab5b9
+
+    #pin-icon
+      color: #c17ceb
+
+
+```
+
+
