@@ -168,7 +168,7 @@ body
     padding: 3rem
     gap: 3rem
 
-    h1 
+    h1
         width: 100%
         font-size: 5rem
         margim-bottom: 4rem
@@ -177,3 +177,43 @@ body
         -webkit-text-fill-color: transparent
 
 ```
+
+## Estruturando o sidebar
+
+Sidebar.jsx
+
+```jsx
+import React from "react";
+
+export const Sidebar = () => {
+  return (
+    <aside id="sidebar">
+      <p>imagem</p>
+      <p className="title">Desenvolvedor</p>
+      <p>rede sociais</p>
+      <p>Informações de contato</p>
+      <a href="" className="btn">
+        Download currículo
+      </a>
+    </aside>
+  );
+};
+```
+
+> importando a imagem
+
+```jsx
+import Avatar from "../img/eu.jpg";
+```
+
+> Criando arquivo estilo sidebar.sass
+
+rsc/styles/components/sidebar.sass
+
+> Importando o sidebar.sass para Sidebar.jsx
+
+```jsx
+import "../styles/components/sidebar.sass";
+```
+
+
